@@ -56,7 +56,11 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Drq-EN-xhU"/>
-                                    <barButtonItem title="New Collection" id="n3T-yW-DuV"/>
+                                    <barButtonItem title="New Collection" id="n3T-yW-DuV">
+                                        <connections>
+                                            <action selector="newPhotoPressed:" destination="wxJ-gn-t5V" id="5iO-Gp-L0a"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="zF2-tS-JUc"/>
                                 </items>
                             </toolbar>

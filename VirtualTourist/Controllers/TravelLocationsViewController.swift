@@ -22,8 +22,6 @@ class TravelLocationsViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         let longPress = UILongPressGestureRecognizer(target: self, action:#selector(addPin))
         longPress.minimumPressDuration = 2.0
         
@@ -77,11 +75,8 @@ class TravelLocationsViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         selectedAnnotation = view.annotation as? MKPointAnnotation
         location = selectedAnnotation?.coordinate
-        //let photoVc = storyboard?.instantiateViewController(withIdentifier: "PhotoAlbumViewController") as! PhotoAlbumViewController
-       // photoVc.coordinate = location
-       
-      DispatchQueue.main.async {
-           //self.show(photoVc, sender: self)
+        
+        DispatchQueue.main.async {
            self.performSegue(withIdentifier: "showPhoto", sender: self)
       }
         

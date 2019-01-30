@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		041AE4A921F8CDCC00EC4087 /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041AE4A821F8CDCC00EC4087 /* PhotoAlbumViewController.swift */; };
+		04685B682202139C004B506B /* DataPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04685B672202139C004B506B /* DataPersistence.swift */; };
 		04B0F8F721FC5EA40032AE4B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0F8F621FC5EA40032AE4B /* Constants.swift */; };
 		04B0F8F921FC63FA0032AE4B /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0F8F821FC63F90032AE4B /* NetworkConnection.swift */; };
 		04B0F8FB21FC776A0032AE4B /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0F8FA21FC776A0032AE4B /* PhotoCollectionViewCell.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		041AE4A821F8CDCC00EC4087 /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumViewController.swift; sourceTree = "<group>"; };
+		04685B672202139C004B506B /* DataPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistence.swift; sourceTree = "<group>"; };
 		04B0F8F621FC5EA40032AE4B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		04B0F8F821FC63F90032AE4B /* NetworkConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
 		04B0F8FA21FC776A0032AE4B /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				04B0F8F821FC63F90032AE4B /* NetworkConnection.swift */,
 				04B0F8FA21FC776A0032AE4B /* PhotoCollectionViewCell.swift */,
 				04B0F8FC21FCBEA90032AE4B /* PhotosCollection .swift */,
+				04685B672202139C004B506B /* DataPersistence.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04685B682202139C004B506B /* DataPersistence.swift in Sources */,
 				04B0F8F721FC5EA40032AE4B /* Constants.swift in Sources */,
 				04B4133B21F6787600B82A0F /* TravelLocationsViewController.swift in Sources */,
 				04B0F8F921FC63FA0032AE4B /* NetworkConnection.swift in Sources */,

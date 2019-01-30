@@ -36,13 +36,11 @@ class NetworkConnection {
                     return
                 }
                 
-                /* GUARD: Did we get a successful 2XX response? */
                 guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                     completionHandler (false, "Your request returned a status code other than 2xx!", error)
                     return
                 }
                 
-                /* GUARD: Was there any data returned? */
                 guard let data = data else {
                     completionHandler (false, "No data was returned by the request!", error)
                     
@@ -58,7 +56,6 @@ class NetworkConnection {
                     return
                 }
                 
-                //print(parsedResult)
                 guard let photos = parsedResult[Constants.FlickrResponseKeys.photos] as? [String: AnyObject] else {
                     completionHandler (false, "Cannot find key '\(Constants.FlickrResponseKeys.photos)' in \(String(describing: parsedResult))", error)
                     return
@@ -72,7 +69,6 @@ class NetworkConnection {
                 completionHandler (true, "", nil)
             }
             task.resume()
-       
     }
     
     func randomNumber() -> Int{
@@ -84,10 +80,8 @@ class NetworkConnection {
         for photo in photoArray{
     
             let imageString = photo["url_m"] as? String
-            //print(imageString)
             if let imageString = imageString {
             Photos.flickrPhotos.append(imageString)
-           //print(Photos.flickrPhotos[0])
           }
         }
         

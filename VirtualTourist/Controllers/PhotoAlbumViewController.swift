@@ -21,26 +21,16 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
 
     override func viewDidLoad() {
         super.viewDidLoad()
-         navigationController?.navigationBar.isHidden = true 
-        //navigationItem.backBarButtonItem?.title = "Ok"
-        
-        if let lat = coordinate?.latitude, let lon = coordinate?.longitude {
-            self.networkObject.getPhoto(lat: lat, lon: lon) { (success, message, error) in
-                if (success == true){
-                    DispatchQueue.main.async {
-                        self.collectionView.delegate = self
-                        self.collectionView.dataSource = self
-                    }
-                }else{
-                    print(message)
-                }
-            }
-        }
+        showPhotos()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showPin()
+    }
+    
+    @IBAction func newPhotoPressed(_ sender: Any) {
+        showPhotos()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -54,6 +44,22 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
         let resource = ImageResource(downloadURL: currentPhotoUrl, cacheKey: Photos.flickrPhotos[indexPath.row])
         cell.flickrPhoto.kf.setImage(with: resource)
         return cell
+    }
+    
+    func showPhotos() {
+        
+        if let lat = coordinate?.latitude, let lon = coordinate?.longitude {
+            self.networkObject.getPhoto(lat: lat, lon: lon) { (success, message, error) in
+                if (success == true){
+                    DispatchQueue.main.async {
+                        self.collectionView.delegate = self
+                        self.collectionView.dataSource = self
+                    }
+                }else{
+                    print(message)
+                }
+            }
+        }
     }
     
 }
