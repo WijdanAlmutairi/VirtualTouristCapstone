@@ -11,5 +11,9 @@ import UIKit
 
 struct Photos {
     
-   static var flickrPhotos : [String] = []
+   static var flickrPhotos : [Photo] = []
+    
+   static func removePhotos() {
+        flickrPhotos.removeAll()
+    }
 }

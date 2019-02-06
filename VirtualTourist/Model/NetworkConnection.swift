@@ -8,11 +8,14 @@
 
 import Foundation
 import UIKit
+import Kingfisher
+import CoreData
 
 class NetworkConnection {
     
-    func getPhoto (lat: Double, lon: Double ,_ completionHandler: @escaping (_ result: Bool, _ message: String, _ error: Error?)->()){
+    func getPhoto (lat: Double, lon: Double ,_ completionHandler: @escaping (_ result: Bool, _ message: String, _ error: Error?, _ imageArray:[[String: AnyObject]])->()){
         
+         //Photos.removePhotos()
         let pageNumber = randomNumber()
         
         let methodParameters = [Constants.FlickrParameterKeys.apiKey: Constants.FlickrParameterValues.apiKeyValue,
@@ -32,17 +35,17 @@ class NetworkConnection {
             let task = URLSession.shared.dataTask(with: request){ (data, response, error) in
                 
                 guard (error == nil) else {
-                    completionHandler (false, "", error)
+                    completionHandler (false, "", error, [[:]])
                     return
                 }
                 
                 guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                    completionHandler (false, "Your request returned a status code other than 2xx!", error)
+                    completionHandler (false, "Your request returned a status code other than 2xx!", error,  [[:]])
                     return
                 }
                 
                 guard let data = data else {
-                    completionHandler (false, "No data was returned by the request!", error)
+                    completionHandler (false, "No data was returned by the request!", error,  [[:]])
                     
                     return
                 }
@@ -52,21 +55,22 @@ class NetworkConnection {
                     parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:AnyObject]
                     
                 } catch {
-                    completionHandler (false, "Could not parse the data as JSON: '\(data)'", error)
+                    completionHandler (false, "Could not parse the data as JSON: '\(data)'", error,  [[:]])
                     return
                 }
                 
                 guard let photos = parsedResult[Constants.FlickrResponseKeys.photos] as? [String: AnyObject] else {
-                    completionHandler (false, "Cannot find key '\(Constants.FlickrResponseKeys.photos)' in \(String(describing: parsedResult))", error)
+                    completionHandler (false, "Cannot find key '\(Constants.FlickrResponseKeys.photos)' in \(String(describing: parsedResult))", error,  [[:]])
                     return
                 }
                 
                 guard let photo = photos[Constants.FlickrResponseKeys.photo] as? [[String: AnyObject]] else {
-                    completionHandler (false, "Cannot find key '\(Constants.FlickrResponseKeys.photo)' in \(String(describing: photos))", error)
+                    completionHandler (false, "Cannot find key '\(Constants.FlickrResponseKeys.photo)' in \(String(describing: photos))", error,  [[:]])
                     return
                 }
-                self.extractImageUrl(photoArray: photo)
-                completionHandler (true, "", nil)
+                
+                    //self.extractImageUrl(photoArray: photo)
+                    completionHandler (true, "", nil,  photo)
             }
             task.resume()
     }
@@ -81,7 +85,26 @@ class NetworkConnection {
     
             let imageString = photo["url_m"] as? String
             if let imageString = imageString {
-            Photos.flickrPhotos.append(imageString)
+              let photoToSave = Photo(context: DataPersistence.context)
+                
+              photoToSave.imageUrl = imageString
+              print("\(photoToSave.imageUrl)")
+              photoToSave.dateCreated = Date()
+            //  photoToSave.pin
+          
+              //let currentPhotoUrl = URL(string: photoToSave.imageUrl!)
+//                DispatchQueue.main.async {
+//
+//              let imageView = UIImageView()
+//              imageView.kf.setImage(with: currentPhotoUrl)
+//             
+//              print("here")
+//              let data = imageView.image!.jpegData(compressionQuality: 1)
+//               photoToSave.imageData = data
+//              
+//            }
+
+                DataPersistence.saveContext()
           }
         }
         
