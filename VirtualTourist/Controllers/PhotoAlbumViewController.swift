@@ -28,6 +28,9 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
         collectionView.delegate = self
         collectionView.dataSource = self
         handleFetchRequest()
+        if fetchedResultsController.fetchedObjects?.count == 0 {
+            showPhotos()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,20 +42,15 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
         let fetchRequest: NSFetchRequest<Photo> = Photo.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: false)
         let predicate = NSPredicate(format: "pin == %@", pin)
-        print("\(pin.latitude), \(pin.longitude)")
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        print("\(predicate)")
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataPersistence.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         
         do{
             try fetchedResultsController.performFetch()
-            if fetchedResultsController.fetchedObjects?.count == 0 {
-                showPhotos()
-            }
+           
         }catch{
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
@@ -83,15 +81,25 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
         let imageUrl = URL(string: photo.imageUrl!)
         let resource = ImageResource(downloadURL: imageUrl!)
         cell.flickrPhoto.kf.setImage(with: resource)
+        if let image = cell.flickrPhoto.image {
+            let imageData = image.pngData()
+            photo.imageData = imageData
+        }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photoToDelete = fetchedResultsController.object(at: indexPath)
+        DataPersistence.context.delete(photoToDelete)
+        try? DataPersistence.context.save()
     }
     
     func showPhotos() {
         
         if let lat = coordinate?.latitude, let lon = coordinate?.longitude {
             self.networkObject.getPhoto(lat: lat, lon: lon) { (success, message, error, photoArray) in
-                if (success == true){
+                if (success == true && photoArray.isEmpty == false){
                     for photo in photoArray{
                         
                         let imageString = photo["url_m"] as? String
@@ -108,13 +116,14 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
                     DispatchQueue.main.async {
                         self.handleFetchRequest()
                    }
-                }else{
-                    if (photoArray.isEmpty) {
+                }else {
+                    if (photoArray.isEmpty == true) {
                         self.showAlert(message: "Photos for this location is unavailable")
-                    }
+                    
                 }
             }
-        }
+         }
+      }
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -128,16 +137,12 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
         switch type {
         case .insert:
             self.collectionView.reloadData()
-            // self.collectionView.insertItems(at: [newIndexPath!])
         case .delete:
             self.collectionView.reloadData()
-             //self.collectionView.deleteItems(at: [indexPath!])
         case .move:
             self.collectionView.reloadData()
-            //self.collectionView.moveItem(at: indexPath!, to: newIndexPath!)
        case .update:
             self.collectionView.reloadData()
-                //self.collectionView.reloadItems(at: [indexPath!])
         default:
             break
         }

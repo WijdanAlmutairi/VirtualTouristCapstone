@@ -16,13 +16,8 @@ class TravelLocationsViewController: UIViewController, MKMapViewDelegate, NSFetc
     @IBOutlet weak var mapView: MKMapView!
     
     var pinArray = [Pin]()
-    
-    var lat = 0.0
-    var lon = 0.0
-    var selectedAnnotation: MKPointAnnotation?
     var location: CLLocationCoordinate2D?
     var selectedPin = Pin(context: DataPersistence.context)
-    var fetchedResultsController: NSFetchedResultsController<Pin>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,7 +109,7 @@ class TravelLocationsViewController: UIViewController, MKMapViewDelegate, NSFetc
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        selectedAnnotation = view.annotation as? MKPointAnnotation
+        let selectedAnnotation = view.annotation as? MKPointAnnotation
         location = selectedAnnotation?.coordinate
         
         DispatchQueue.main.async {

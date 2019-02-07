@@ -8,14 +8,11 @@
 
 import Foundation
 import UIKit
-import Kingfisher
-import CoreData
 
 class NetworkConnection {
     
     func getPhoto (lat: Double, lon: Double ,_ completionHandler: @escaping (_ result: Bool, _ message: String, _ error: Error?, _ imageArray:[[String: AnyObject]])->()){
         
-         //Photos.removePhotos()
         let pageNumber = randomNumber()
         
         let methodParameters = [Constants.FlickrParameterKeys.apiKey: Constants.FlickrParameterValues.apiKeyValue,
@@ -69,7 +66,6 @@ class NetworkConnection {
                     return
                 }
                 
-                    //self.extractImageUrl(photoArray: photo)
                     completionHandler (true, "", nil,  photo)
             }
             task.resume()
@@ -78,36 +74,4 @@ class NetworkConnection {
     func randomNumber() -> Int{
         return Int.random(in: 1..<40)
     }
-    
-    func extractImageUrl(photoArray: [[String: AnyObject]]) {
-        
-        for photo in photoArray{
-    
-            let imageString = photo["url_m"] as? String
-            if let imageString = imageString {
-              let photoToSave = Photo(context: DataPersistence.context)
-                
-              photoToSave.imageUrl = imageString
-              print("\(photoToSave.imageUrl)")
-              photoToSave.dateCreated = Date()
-            //  photoToSave.pin
-          
-              //let currentPhotoUrl = URL(string: photoToSave.imageUrl!)
-//                DispatchQueue.main.async {
-//
-//              let imageView = UIImageView()
-//              imageView.kf.setImage(with: currentPhotoUrl)
-//             
-//              print("here")
-//              let data = imageView.image!.jpegData(compressionQuality: 1)
-//               photoToSave.imageData = data
-//              
-//            }
-
-                DataPersistence.saveContext()
-          }
-        }
-        
-    }
-    
 }
