@@ -121,7 +121,6 @@ class TravelLocationsViewController: UIViewController, MKMapViewDelegate, NSFetc
             for onePin in self.pinArray {
                 if onePin.latitude == self.location?.latitude && onePin.longitude == self.location?.longitude{
                     self.selectedPin = onePin
-                    print("in pin")
                 }
             }
            self.performSegue(withIdentifier: "showPhoto", sender: self)

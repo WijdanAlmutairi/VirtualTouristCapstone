@@ -21,27 +21,18 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
     var networkObject = NetworkConnection()
     var pin: Pin!
     var fetchedResultsController: NSFetchedResultsController<Photo>!
-    var blockOperations = BlockOperation()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-       // handleFetchRequest()
-        
-        //if fetchedResultsController.fetchedObjects?.count == 0  {
-        DispatchQueue.main.async {
-            self.showPhotos()
-        }
-        
-        
-       // }
+       
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        handleFetchRequest()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showPin()
-        print("will")
     }
     
     func handleFetchRequest () {
@@ -52,7 +43,6 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        print("\(sortDescriptor)")
         print("\(predicate)")
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataPersistence.context, sectionNameKeyPath: nil, cacheName: nil)
@@ -60,20 +50,30 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
         
         do{
             try fetchedResultsController.performFetch()
-             print("\(fetchedResultsController.fetchedObjects?.count)")
-           // collectionView.reloadData()
+            if fetchedResultsController.fetchedObjects?.count == 0 {
+                showPhotos()
+            }
         }catch{
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
     }
     
     @IBAction func newPhotoPressed(_ sender: Any) {
+        deleteAll()
         showPhotos()
-        handleFetchRequest()
+    }
+    
+    func deleteAll(){
+        if let photoArray = fetchedResultsController.fetchedObjects {
+         for photo in photoArray {
+            DataPersistence.context.delete(photo)
+            try? DataPersistence.context.save()
+        }
+      }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fetchedResultsController.fetchedObjects?.count ?? 1
+        return fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -99,7 +99,6 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
                             let photoToSave = Photo(context: DataPersistence.context)
                             
                             photoToSave.imageUrl = imageString
-                            print("\(photoToSave.imageUrl)")
                             photoToSave.dateCreated = Date()
                             photoToSave.pin = self.pin
                             
@@ -108,12 +107,11 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
                     }
                     DispatchQueue.main.async {
                         self.handleFetchRequest()
-                        self.collectionView.delegate = self
-                        self.collectionView.dataSource = self
-                        
                    }
                 }else{
-                    print(message)
+                    if (photoArray.isEmpty) {
+                        self.showAlert(message: "Photos for this location is unavailable")
+                    }
                 }
             }
         }
@@ -121,27 +119,25 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         collectionView.performBatchUpdates({
-            blockOperations.start()
+            self.collectionView.reloadData()
         }, completion: nil)
-       // collectionView.reloadData()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         switch type {
         case .insert:
-            blockOperations.addExecutionBlock {
-                 self.collectionView.insertItems(at: [newIndexPath!])
-            }
-        
+            self.collectionView.reloadData()
+            // self.collectionView.insertItems(at: [newIndexPath!])
         case .delete:
-            print("delete")
+            self.collectionView.reloadData()
+             //self.collectionView.deleteItems(at: [indexPath!])
         case .move:
-            print("move")
-        case .update:
-            blockOperations.addExecutionBlock {
-                self.collectionView.reloadItems(at: [indexPath!])
-            }
+            self.collectionView.reloadData()
+            //self.collectionView.moveItem(at: indexPath!, to: newIndexPath!)
+       case .update:
+            self.collectionView.reloadData()
+                //self.collectionView.reloadItems(at: [indexPath!])
         default:
             break
         }
