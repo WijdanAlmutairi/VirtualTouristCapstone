@@ -80,7 +80,8 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
         let photo = fetchedResultsController.object(at: indexPath)
         let imageUrl = URL(string: photo.imageUrl!)
         let resource = ImageResource(downloadURL: imageUrl!)
-        cell.flickrPhoto.kf.setImage(with: resource)
+        cell.flickrPhoto.kf.indicatorType = .activity
+        cell.flickrPhoto.kf.setImage(with: resource, placeholder: UIImage(named: "Placeholder"))
         if let image = cell.flickrPhoto.image {
             let imageData = image.pngData()
             photo.imageData = imageData

@@ -18,12 +18,17 @@ class TravelLocationsViewController: UIViewController, MKMapViewDelegate, NSFetc
     var pinArray = [Pin]()
     var location: CLLocationCoordinate2D?
     var selectedPin = Pin(context: DataPersistence.context)
+    var longPress: UILongPressGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let longPress = UILongPressGestureRecognizer(target: self, action:#selector(addPin))
+        longPress = UILongPressGestureRecognizer(target: self, action:#selector(addPin))
         longPress.minimumPressDuration = 2.0
+        
+//        if(longPress.state != .began){
+//            return
+//        }
         
         mapView.addGestureRecognizer(longPress)
     
@@ -54,6 +59,9 @@ class TravelLocationsViewController: UIViewController, MKMapViewDelegate, NSFetc
     
    @objc func addPin(gestureRecognizer:UIGestureRecognizer) {
     
+    if(longPress.state != .began) {
+                return
+    }
     let touchPoint = gestureRecognizer.location(in: mapView)
     let newCoordinates = mapView.convert(touchPoint, toCoordinateFrom: mapView)
     let annotation = MKPointAnnotation()
