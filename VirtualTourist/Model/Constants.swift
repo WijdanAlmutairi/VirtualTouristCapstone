@@ -52,7 +52,34 @@ struct Constants {
         
     }
     
-    static func getURLFromParameter(_ parameters: [String: AnyObject]) -> URL {
+    struct Event {
+        static let ApiScheme = "https"
+        static let ApiHost = "www.eventbriteapi.com"
+        static let ApiPath = "/v3/events/search/"
+    }
+    
+    struct EventParameterKeys {
+        static let token = "token"
+        static let latitude = "location.latitude"
+        static let longitude = "location.longitude"
+        static let latitudeNortheast = "location.viewport.northeast.latitude"
+        static let longitudeNortheast = "location.viewport.northeast.longitude"
+        static let latitudeSouthwest = "location.viewport.southwest.latitude"
+        static let longitudeSouthwest = "location.viewport.southwest.longitude"
+        static let expand = "expand"
+    }
+    
+    struct EventParameterValues {
+        static let tokenValue = "CBLK3S7ENTUYYY33POCL"
+        static let expandValueOne = "venue"
+        static let expandValueTwo = "orgnizer"
+    }
+    
+    struct EventResponseKeys {
+        static let events = "events"
+    }
+   
+    static func getURLFromParameterFlickr(_ parameters: [String: AnyObject]) -> URL {
         
         var components = URLComponents()
         components.scheme = Constants.Flickr.ApiScheme
@@ -64,7 +91,21 @@ struct Constants {
             let queryItem = URLQueryItem (name: key, value: "\(value)")
             components.queryItems!.append(queryItem)
         }
-        print(components.url!)
+        return components.url!
+    }
+    
+    static func getURLFromParameterEvent(_ parameters: [String: AnyObject]) -> URL {
+        
+        var components = URLComponents()
+        components.scheme = Constants.Event.ApiScheme
+        components.host = Constants.Event.ApiHost
+        components.path = Constants.Event.ApiPath
+        components.queryItems = [URLQueryItem]()
+        
+        for (key, value) in parameters {
+            let queryItem = URLQueryItem (name: key, value: "\(value)")
+            components.queryItems!.append(queryItem)
+        }
         return components.url!
     }
 }

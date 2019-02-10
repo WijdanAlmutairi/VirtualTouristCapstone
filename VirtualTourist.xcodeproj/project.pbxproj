@@ -19,6 +19,10 @@
 		04B4134121F6787600B82A0F /* VirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04B4133F21F6787600B82A0F /* VirtualTourist.xcdatamodeld */; };
 		04B4134321F6787C00B82A0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04B4134221F6787C00B82A0F /* Assets.xcassets */; };
 		04B4134621F6787C00B82A0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B4134421F6787C00B82A0F /* LaunchScreen.storyboard */; };
+		04F981AB220F080900074D3D /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F981AA220F080900074D3D /* TableViewCell.swift */; };
+		04F981AD220F1E2000074D3D /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F981AC220F1E2000074D3D /* EventViewController.swift */; };
+		04F981AF220F3D3D00074D3D /* EventInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F981AE220F3D3C00074D3D /* EventInformation.swift */; };
+		04F981B1220F3E4E00074D3D /* AllEventsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F981B0220F3E4E00074D3D /* AllEventsArray.swift */; };
 		45930B898335EFCD6B61A3AA /* Pods_VirtualTourist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6D30133A01C39E03B15BB5 /* Pods_VirtualTourist.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +41,10 @@
 		04B4134221F6787C00B82A0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04B4134521F6787C00B82A0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04B4134721F6787C00B82A0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04F981AA220F080900074D3D /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		04F981AC220F1E2000074D3D /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		04F981AE220F3D3C00074D3D /* EventInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInformation.swift; sourceTree = "<group>"; };
+		04F981B0220F3E4E00074D3D /* AllEventsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEventsArray.swift; sourceTree = "<group>"; };
 		33F1EC6637D7A81195A6C312 /* Pods-VirtualTourist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualTourist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualTourist/Pods-VirtualTourist.debug.xcconfig"; sourceTree = "<group>"; };
 		4EDEE1F80E5FC90E4F157812 /* Pods-VirtualTourist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualTourist.release.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualTourist/Pods-VirtualTourist.release.xcconfig"; sourceTree = "<group>"; };
 		AC6D30133A01C39E03B15BB5 /* Pods_VirtualTourist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtualTourist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +70,9 @@
 				04B0F8F821FC63F90032AE4B /* NetworkConnection.swift */,
 				04B0F8FA21FC776A0032AE4B /* PhotoCollectionViewCell.swift */,
 				04685B672202139C004B506B /* DataPersistence.swift */,
+				04F981AA220F080900074D3D /* TableViewCell.swift */,
+				04F981AE220F3D3C00074D3D /* EventInformation.swift */,
+				04F981B0220F3E4E00074D3D /* AllEventsArray.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -79,6 +90,7 @@
 			children = (
 				04B4133A21F6787600B82A0F /* TravelLocationsViewController.swift */,
 				041AE4A821F8CDCC00EC4087 /* PhotoAlbumViewController.swift */,
+				04F981AC220F1E2000074D3D /* EventViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -246,14 +258,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				04685B682202139C004B506B /* DataPersistence.swift in Sources */,
+				04F981AD220F1E2000074D3D /* EventViewController.swift in Sources */,
 				04B0F8F721FC5EA40032AE4B /* Constants.swift in Sources */,
 				04B4133B21F6787600B82A0F /* TravelLocationsViewController.swift in Sources */,
 				04B0F8F921FC63FA0032AE4B /* NetworkConnection.swift in Sources */,
+				04F981AF220F3D3D00074D3D /* EventInformation.swift in Sources */,
 				04B4133921F6787600B82A0F /* AppDelegate.swift in Sources */,
+				04F981AB220F080900074D3D /* TableViewCell.swift in Sources */,
 				04B0F8FB21FC776A0032AE4B /* PhotoCollectionViewCell.swift in Sources */,
 				04B4134121F6787600B82A0F /* VirtualTourist.xcdatamodeld in Sources */,
 				040009F1220CCABC006EB557 /* Alert.swift in Sources */,
 				041AE4A921F8CDCC00EC4087 /* PhotoAlbumViewController.swift in Sources */,
+				04F981B1220F3E4E00074D3D /* AllEventsArray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

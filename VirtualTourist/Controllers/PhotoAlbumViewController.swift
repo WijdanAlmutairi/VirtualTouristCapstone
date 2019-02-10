@@ -61,6 +61,10 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
         showPhotos()
     }
     
+    @IBAction func findEventPressed(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "showEvent", sender: self)
+    }
     func deleteAll(){
         if let photoArray = fetchedResultsController.fetchedObjects {
          for photo in photoArray {
@@ -147,6 +151,12 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
         default:
             break
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let eventVc = segue.destination as! EventViewController
+        eventVc.lat = pin.latitude
+        eventVc.lon = pin.longitude
     }
     
 }
