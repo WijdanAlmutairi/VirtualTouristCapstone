@@ -5,10 +5,19 @@
 ## Overview
 
    VirtualTouristCapstone project enable the user to tour the world as the user can place pin on the location he/she desire
-   to view its photos then if the user pressed the pin a colletion of photos is displayed for that location also the 
-   user can refresh the photo collection by pressing the new collection button finally the user can find events related
-   to the location displayed in a table view and if the user pressed an event he/she will be redirected to the web
-   browser to show more details about the event.  
+   to view its photos also the user can view the events for that location.
+   
+   
+## App Functions 
+   <ul>
+        <li>The user need to press for 2 seconds to add a new Pin on the map </li>
+        <li>When the user press the pin it will navigate to photos colletion screen </li>
+        <li>When the user press the new collection button in photos colletion screen it will fetch a new collection of          photos  </li>
+        <li>When the user click on a photo in the Collection View, it will be removed from CoreData</li>
+        <li>The user press the find event button it will navigate to events screen </li>
+        <li>When the user click on an event he/she will be redirected to the web browser to show more details about the event   </li>
+    </ul> 
+
 
 ## Screenshots 
 
