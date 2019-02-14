@@ -10,9 +10,14 @@ browser to show more details about the event.
 
 # Screenshots 
 
-<img src="https://drive.google.com/uc?id=1m6dmMHB1Hi3_BGUXozuiYMyrUIrgrBr2" width="200" height="300">
+<p float="left">
+  <img src="https://drive.google.com/uc?id=1m6dmMHB1Hi3_BGUXozuiYMyrUIrgrBr2" width="200" height="300" />  
+  <img src="https://drive.google.com/uc?id=1Ax4e8IWN7DWGD96Y4Q-nWRH1WbGhsGNA" width="200" height="300" />
+</p>
 
-<img src="https://drive.google.com/uc?id=1Ax4e8IWN7DWGD96Y4Q-nWRH1WbGhsGNA" width="200" height="300">
+
+
+
 
 
 
