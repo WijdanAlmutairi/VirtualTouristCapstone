@@ -21,9 +21,13 @@ browser to show more details about the event.
 I used [Kingfisher](https://github.com/onevcat/Kingfisher) library
 
 # Build Requirements
-a. iOS version : 11.4
-b. XCode version : 10.0
-c. Swift version : 4.2 
+
+<ul>
+  <li>iOS version : 11.4</li>
+  <li>XCode version : 10.0</li>
+  <li>Swift version : 4.2 </li>
+</ul> 
+
 
 # Installation
 
