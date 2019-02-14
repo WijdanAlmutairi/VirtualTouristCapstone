@@ -18,6 +18,8 @@ browser to show more details about the event.
 
 # Libraries
 
+[Kingfisher](https://github.com/onevcat/Kingfisher)
+
 # Installation
 
 `git clone https://github.com/WijdanAlmutairi/VirtualTouristCapstone`
