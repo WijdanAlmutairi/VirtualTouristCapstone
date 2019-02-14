@@ -9,7 +9,7 @@ to the location displayed in a table view and if the user pressed an event he/sh
 browser to show more details about the event.  
 
 # Screenshots 
-![Home Page](https://dochub.com/wjdanalmoteri/7yxrj5/img-0222-png)
+![Home Page](https://drive.google.com/open?id=1m6dmMHB1Hi3_BGUXozuiYMyrUIrgrBr2)
 
 
 # Installation
