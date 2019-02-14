@@ -1,10 +1,13 @@
-# VirtualTourist
+# VirtualTouristCapstone
 
-### Project 5 in iOS Nanodegree Udacity
+### Project 6 in iOS Nanodegree Udacity
 
-VirtualTourist project enable the user to tour the world as the user can place pin on the location he/she desire
-to view its photos then if the user pressed the pin a colletion of photos is displayed for that location.
+VirtualTouristCapstone project enable the user to tour the world as the user can place pin on the location he/she desire
+to view its photos then if the user pressed the pin a colletion of photos is displayed for that location also the 
+user can refresh the photo collection by pressing the new collection button finally the user can find events related
+to the location displayed in a table view and if the user pressed an event he/she will be redirected to the web
+browser to show more details about the event.  
 
 # installation
 
-`git clone https://github.com/WijdanAlmutairi/VirtualTourist`
+`git clone https://github.com/WijdanAlmutairi/VirtualTouristCapstone`
