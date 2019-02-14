@@ -8,6 +8,10 @@ user can refresh the photo collection by pressing the new collection button fina
 to the location displayed in a table view and if the user pressed an event he/she will be redirected to the web
 browser to show more details about the event.  
 
-# installation
+# Screenshots 
+![Home Page](https://dochub.com/wjdanalmoteri/7yxrj5/img-0222-png)
+
+
+# Installation
 
 `git clone https://github.com/WijdanAlmutairi/VirtualTouristCapstone`
