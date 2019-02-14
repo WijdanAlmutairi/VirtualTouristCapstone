@@ -18,7 +18,7 @@ browser to show more details about the event.
 
 # Libraries
 
-[Kingfisher](https://github.com/onevcat/Kingfisher)
+I used [Kingfisher](https://github.com/onevcat/Kingfisher) library
 
 # Installation
 
