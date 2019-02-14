@@ -11,9 +11,9 @@ browser to show more details about the event.
 # Screenshots 
 
 <p float="left">
-     <img  title="Home Page"src="https://drive.google.com/uc?id=1m6dmMHB1Hi3_BGUXozuiYMyrUIrgrBr2" width="200" height="300" hspace="20" />  
-  <img src="https://drive.google.com/uc?id=1Ax4e8IWN7DWGD96Y4Q-nWRH1WbGhsGNA" width="200" height="300" hspace="20" />
-  <img src="https://drive.google.com/uc?id=1lIpSsHVUdWn-wacFIWCN_hTagEA6JXAu" width="200" height="300" hspace="20" />
+     <img  title="Map Page" src="https://drive.google.com/uc?id=1m6dmMHB1Hi3_BGUXozuiYMyrUIrgrBr2" width="200" height="300" hspace="20" />  
+  <img title="Photo Page" src="https://drive.google.com/uc?id=1Ax4e8IWN7DWGD96Y4Q-nWRH1WbGhsGNA" width="200" height="300" hspace="20" />
+  <img title="Find Event Page" src="https://drive.google.com/uc?id=1lIpSsHVUdWn-wacFIWCN_hTagEA6JXAu" width="200" height="300" hspace="20" />
 </p>
 
 # Libraries
