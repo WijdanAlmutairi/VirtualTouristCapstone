@@ -15,6 +15,12 @@ browser to show more details about the event.
   <img title="Photo Page" src="https://drive.google.com/uc?id=1Ax4e8IWN7DWGD96Y4Q-nWRH1WbGhsGNA" width="200" height="300" hspace="20" />
   <img title="Find Event Page" src="https://drive.google.com/uc?id=1lIpSsHVUdWn-wacFIWCN_hTagEA6JXAu" width="200" height="300" hspace="20" />
 </p>
+ ### Screenshots Information
+<ul>
+  <li>The First page is the map where the user can place multiple pins for the locations the he/she desire </li>
+  <li>The second page is the photos collection where the user view the photos for the pin he/she pressed </li>
+  <li>The third page is the events table where the user view the events for the pin he/she pressed</li>
+</ul> 
 
 # Libraries
 
