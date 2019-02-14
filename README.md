@@ -16,11 +16,7 @@ browser to show more details about the event.
   <img src="https://drive.google.com/uc?id=1lIpSsHVUdWn-wacFIWCN_hTagEA6JXAu" width="200" height="300" hspace="20" />
 </p>
 
-
-
-
-
-
+# Libraries
 
 # Installation
 
