@@ -9,9 +9,9 @@ to the location displayed in a table view and if the user pressed an event he/sh
 browser to show more details about the event.  
 
 # Screenshots 
-![Home Page](https://drive.google.com/uc?id=1m6dmMHB1Hi3_BGUXozuiYMyrUIrgrBr2){:height="50%" width="50%"}
-<img src="https://drive.google.com/uc?id=1m6dmMHB1Hi3_BGUXozuiYMyrUIrgrBr2" width="100" height="100">
-![Home Page](https://drive.google.com/uc?id=1m6dmMHB1Hi3_BGUXozuiYMyrUIrgrBr2 | width=100)
+
+<img src="https://drive.google.com/uc?id=1m6dmMHB1Hi3_BGUXozuiYMyrUIrgrBr2" width="200" height="300">
+
 
 
 # Installation
