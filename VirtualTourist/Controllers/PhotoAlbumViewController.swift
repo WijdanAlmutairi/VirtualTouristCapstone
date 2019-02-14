@@ -121,12 +121,13 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
                     DispatchQueue.main.async {
                         self.handleFetchRequest()
                    }
-                }else {
-                    if (photoArray.isEmpty == true) {
+                }else if (success == true && photoArray.isEmpty == true) {
                         self.showAlert(message: "Photos for this location is unavailable")
                     
-                }
-            }
+                }else {
+                        self.showAlert(message: "Please check your internet connection")
+                    }
+            
          }
       }
     }

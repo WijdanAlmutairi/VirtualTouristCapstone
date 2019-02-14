@@ -27,8 +27,10 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
-            }else if (AllEventsArray.EventsArray.count == 0){
+            }else if (success == true && AllEventsArray.EventsArray.count == 0){
                  self.showAlert(message: "Events for this location is unavailable")
+            }else {
+                self.showAlert(message: "Please check your internet connection")
             }
         }
     }

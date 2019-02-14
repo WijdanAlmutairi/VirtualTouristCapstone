@@ -26,10 +26,6 @@ class TravelLocationsViewController: UIViewController, MKMapViewDelegate, NSFetc
         longPress = UILongPressGestureRecognizer(target: self, action:#selector(addPin))
         longPress.minimumPressDuration = 2.0
         
-//        if(longPress.state != .began){
-//            return
-//        }
-        
         mapView.addGestureRecognizer(longPress)
     
         handleFetchRequest()
