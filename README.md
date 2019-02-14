@@ -20,6 +20,11 @@ browser to show more details about the event.
 
 I used [Kingfisher](https://github.com/onevcat/Kingfisher) library
 
+# Build Requirements
+a. iOS version : 11.4
+b. XCode version : 10.0
+c. Swift version : 4.2 
+
 # Installation
 
 `git clone https://github.com/WijdanAlmutairi/VirtualTouristCapstone`
