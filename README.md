@@ -18,7 +18,7 @@
   <img title="Find Event Page" src="https://drive.google.com/uc?id=1lIpSsHVUdWn-wacFIWCN_hTagEA6JXAu" width="200" height="300" hspace="20" />
 </p>
 
-   ##### Screenshots Information
+   #### Screenshots Information
    <ul>
         <li>The First page is the map where the user can place multiple pins for the locations the he/she desire </li>
         <li>The second page is the photos collection where the user view the photos for the pin he/she pressed </li>
